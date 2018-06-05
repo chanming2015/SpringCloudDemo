@@ -1,6 +1,8 @@
 package com.github.chanming2015.springcloud.eureka.client.web;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -12,9 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class TestController
 {
-    @RequestMapping("/")
-    public String home()
+    @Value("${server.port}")
+    private String port;
+    @RequestMapping("/hi")
+    public String home(@RequestParam String name)
     {
-        return "Hello world";
+        return "hi " + name + ",i am from port:" + port;
     }
 }

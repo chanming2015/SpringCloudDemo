@@ -35,7 +35,6 @@
 	</dependencyManagement>
 
 	<dependencies>
-		<!--eureka server -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-eureka</artifactId>
