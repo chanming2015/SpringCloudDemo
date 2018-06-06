@@ -1,9 +1,14 @@
 package com.github.chanming2015.springcloud.eureka.client.web;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.google.gson.JsonObject;
 
 /**
  * Description:
@@ -17,9 +22,13 @@ public class TestController
     @Value("${server.port}")
     private String port;
 
-    @GetMapping("/hi")
-    public String home(@RequestParam String name)
+    @GetMapping(value = "/hi", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    public ResponseEntity<String> home(@RequestParam String name, @RequestParam(required = false) String value)
     {
-        return "hi " + name + ",i am from port:" + port;
+        JsonObject result = new JsonObject();
+        result.addProperty("name", name);
+        result.addProperty("value", value);
+        result.addProperty("port", port);
+        return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
     }
 }

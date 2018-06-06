@@ -1,5 +1,7 @@
 package com.github.chanming2015.springcloud.feign.service.impl;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.github.chanming2015.springcloud.feign.service.SchedualServiceHi;
@@ -14,8 +16,8 @@ import com.github.chanming2015.springcloud.feign.service.SchedualServiceHi;
 public class SchedualServiceHiHystric implements SchedualServiceHi
 {
     @Override
-    public String sayHiFromClientOne(String name)
+    public ResponseEntity<String> sayHiFromClientOne(String name)
     {
-        return "sorry " + name;
+        return new ResponseEntity<String>("sorry " + name, HttpStatus.BAD_REQUEST);
     }
 }
