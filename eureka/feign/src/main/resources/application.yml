@@ -5,6 +5,7 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://dev.eureka.server:8761/eureka/
+
 spring:
   application:
     name: service-feign
@@ -12,3 +13,18 @@ spring:
 feign:
   hystrix:
     enabled: true
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
