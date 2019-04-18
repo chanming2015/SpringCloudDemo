@@ -7,15 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.github.chanming2015.springcloud.feign.service.impl.SchedualServiceHiHystric;
-
 /**
  * Description:
  * Create Date:2018年6月4日
  * @author XuMaoSen
  * Version:1.0.0
  */
-@FeignClient(value = "service-hi", fallback = SchedualServiceHiHystric.class)
+@FeignClient(value = "service-hi", fallbackFactory = MyFallbackFactory.class)
 public interface SchedualServiceHi
 {
     @RequestMapping(value = "/hi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

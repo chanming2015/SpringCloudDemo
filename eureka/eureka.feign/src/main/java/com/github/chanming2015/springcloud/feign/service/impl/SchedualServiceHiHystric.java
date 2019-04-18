@@ -15,9 +15,17 @@ import com.github.chanming2015.springcloud.feign.service.SchedualServiceHi;
 @Service
 public class SchedualServiceHiHystric implements SchedualServiceHi
 {
+    private static final ResponseEntity<String> RESPONSE_ENTITY_TIMEOUT = new ResponseEntity<>(HttpStatus.REQUEST_TIMEOUT);
+    private ResponseEntity<String> responseEntity = null;
+
+    public void setResponseEntity(ResponseEntity<String> responseEntity)
+    {
+        this.responseEntity = responseEntity == null ? RESPONSE_ENTITY_TIMEOUT : responseEntity;
+    }
+
     @Override
     public ResponseEntity<String> sayHiFromClientOne(String name)
     {
-        return new ResponseEntity<String>("sorry " + name, HttpStatus.BAD_REQUEST);
+        return responseEntity;
     }
 }
