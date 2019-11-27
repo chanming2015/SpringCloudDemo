@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.google.gson.JsonObject;
+import com.alibaba.fastjson.JSONObject;
 
 /**
  * Description:
@@ -25,10 +25,10 @@ public class TestController
     @GetMapping(value = "/hi", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<String> home(@RequestParam String name, @RequestParam(required = false) String value)
     {
-        JsonObject result = new JsonObject();
-        result.addProperty("name", name);
-        result.addProperty("value", value);
-        result.addProperty("port", port);
+        JSONObject result = new JSONObject();
+        result.put("name", name);
+        result.put("value", value);
+        result.put("port", port);
         return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
     }
 }
