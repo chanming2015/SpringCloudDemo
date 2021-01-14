@@ -1,0 +1,17 @@
+server:
+  port: 8099
+
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+          
+eureka:
+  client:
+    service-url:
+      defaultZone: http://dev.eureka.server:8761/eureka/
