@@ -30,6 +30,8 @@ ribbon:
     enabled: true
 
 hystrix:
+  dashboard:
+    proxy-stream-allow-list: localhost
   command:
     default:
       execution:
@@ -38,3 +40,14 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 6000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+        
+        
+        
+        
+        

@@ -29,6 +29,6 @@ public class TestController
         result.put("name", name);
         result.put("value", value);
         result.put("port", port);
-        return new ResponseEntity<String>(result.toString(), HttpStatus.OK);
+        return new ResponseEntity<>(result.toString(), HttpStatus.OK);
     }
 }

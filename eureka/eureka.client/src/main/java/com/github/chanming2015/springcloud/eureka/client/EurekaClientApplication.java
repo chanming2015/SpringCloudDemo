@@ -2,7 +2,6 @@ package com.github.chanming2015.springcloud.eureka.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 /**
  *
@@ -12,7 +11,6 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
  * Version:1.0.0
  */
 @SpringBootApplication
-@EnableEurekaClient
 public class EurekaClientApplication
 {
     public static void main(String[] args) throws Exception

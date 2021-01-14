@@ -38,6 +38,10 @@ public class MyFallbackFactory implements FallbackFactory<SchedualServiceHi>
             FeignException e = (FeignException) cause;
             feignClient.setResponseEntity(new ResponseEntity<>(e.getMessage(), HttpStatus.valueOf(e.status())));
         }
+        else
+        {
+            feignClient.setResponseEntity(new ResponseEntity<>(cause.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR));
+        }
         return feignClient;
     }
 }

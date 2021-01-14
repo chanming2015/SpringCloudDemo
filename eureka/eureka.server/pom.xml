@@ -8,7 +8,6 @@
 	<version>1.0.0</version>
 	<packaging>jar</packaging>
 
-	<!-- Inherit defaults from Spring Boot -->
 	<parent>
 		<groupId>com.github.chanming2015.springcloud</groupId>
 		<artifactId>eureka.parent</artifactId>
