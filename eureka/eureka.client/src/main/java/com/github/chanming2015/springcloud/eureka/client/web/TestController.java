@@ -22,7 +22,7 @@ public class TestController
     @Value("${server.port}")
     private String port;
 
-    @GetMapping(value = "/hi", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/hi", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> home(@RequestParam String name, @RequestParam(required = false) String value)
     {
         JSONObject result = new JSONObject();

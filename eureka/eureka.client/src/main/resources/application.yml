@@ -8,3 +8,8 @@ eureka:
 spring:
   application:
     name: service-hi
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://service-gateway:8099/.well-known/jwks.json
