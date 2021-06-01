@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.nimbusds.jose.jwk.JWKSet;
 import com.nimbusds.jose.jwk.RSAKey;
@@ -19,7 +20,7 @@ import net.minidev.json.JSONObject;
  * Create Date:2021年1月28日 <br/> 
  * @author XuMaoSen
  */
-// @RestController
+@RestController
 public class AuthorizationController
 {
     @Autowired
