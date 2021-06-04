@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +23,8 @@ public class HiController
     private SchedualServiceHi schedualServiceHi;
 
     @GetMapping(value = "/hi", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity<String> sayHi(@RequestParam String name)
+    public ResponseEntity<String> sayHi(@RequestParam String name, @RequestHeader(required = true) String cookie)
     {
-        return schedualServiceHi.sayHiFromClientOne(name);
+        return schedualServiceHi.sayHiFromClientOne(name, cookie);
     }
 }

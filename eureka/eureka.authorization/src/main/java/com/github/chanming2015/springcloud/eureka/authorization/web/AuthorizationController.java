@@ -26,10 +26,9 @@ public class AuthorizationController
     @Autowired
     private KeyPair keyPair;
 
-    @GetMapping(value = "/.public/jwks.json", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/.auth/jwks.json", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<JSONObject> getJwk()
     {
-        System.out.println("AuthorizationController: getJwk()");
         RSAPublicKey publicKey = (RSAPublicKey) this.keyPair.getPublic();
         RSAKey key = new RSAKey.Builder(publicKey).build();
         return new ResponseEntity<>(new JWKSet(key).toJSONObject(), HttpStatus.OK);

@@ -3,6 +3,7 @@ package com.github.chanming2015.springcloud.feign.service;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,5 +18,5 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface SchedualServiceHi
 {
     @RequestMapping(value = "/hi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    ResponseEntity<String> sayHiFromClientOne(@RequestParam(value = "name") String name);
+    ResponseEntity<String> sayHiFromClientOne(@RequestParam(value = "name") String name, @RequestHeader(value = "Cookie") String cookie);
 }

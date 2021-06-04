@@ -12,4 +12,4 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          jwk-set-uri: http://service-gateway:8099/.well-known/jwks.json
+          jwk-set-uri: http://oauth-server:8769/.auth/jwks.json

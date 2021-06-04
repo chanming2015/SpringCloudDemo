@@ -24,7 +24,7 @@ public class SchedualServiceHiHystric implements SchedualServiceHi
     }
 
     @Override
-    public ResponseEntity<String> sayHiFromClientOne(String name)
+    public ResponseEntity<String> sayHiFromClientOne(String name, String cookie)
     {
         return responseEntity;
     }
