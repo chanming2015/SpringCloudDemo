@@ -34,7 +34,6 @@ security:
       client-secret: Aispeech123!
       authorized-grant-types:
       - authorization_code
-      - password
       registered-redirect-uri:
       - http://localhost:8099/login/oauth2/code/custom
       scope:
