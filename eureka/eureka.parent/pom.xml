@@ -21,6 +21,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
+		<spring-cloud-netflix.version>2.2.6.RELEASE</spring-cloud-netflix.version>
 	</properties>
 
 	<dependencies>
@@ -40,10 +41,55 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+				<version>${spring-cloud-netflix.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.cloud</groupId>
+						<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.netflix.ribbon</groupId>
+						<artifactId>ribbon-eureka</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+				<version>${spring-cloud-netflix.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.cloud</groupId>
+						<artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.netflix.ribbon</groupId>
+						<artifactId>ribbon-eureka</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-netflix-archaius</artifactId>
+				<version>${spring-cloud-netflix.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework.cloud</groupId>
+						<artifactId>spring-cloud-netflix-ribbon</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			
 			<dependency>
 				<groupId>com.alibaba</groupId>
 				<artifactId>fastjson</artifactId>
-				<version>1.2.62</version>
+				<version>1.2.75</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>

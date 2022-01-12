@@ -5,11 +5,17 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.security.web.server.SecurityWebFilterChain;
+import org.springframework.web.server.WebFilter;
 
 import com.github.chanming2015.springcloud.eureka.gateway.handler.MyAccessDecisionManager;
+import com.github.chanming2015.springcloud.eureka.gateway.http.PayloadServerWebExchangeDecorator;
+import com.github.chanming2015.springcloud.eureka.gateway.util.MyAsyncTaskExecutor;
 
 /**
  * Description: 服务网关 <br/> 
@@ -34,5 +40,23 @@ public class GatewayApplication
     {
         http.oauth2Login().and().authorizeExchange().anyExchange().access(myAccessDecisionManager);
         return http.csrf().disable().build();
+    }
+
+    @Autowired
+    private MyAsyncTaskExecutor myAsyncTaskExecutor;
+
+    @Bean
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    public WebFilter webFilter()
+    {
+        return (exchange, chain) ->
+        {
+            final ServerHttpRequest request = exchange.getRequest();
+            if (!request.getURI().getPath().contains("swagger") && !request.getURI().getPath().contains("health"))
+            {
+                return chain.filter(new PayloadServerWebExchangeDecorator(exchange, myAsyncTaskExecutor));
+            }
+            return chain.filter(exchange);
+        };
     }
 }

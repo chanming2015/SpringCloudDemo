@@ -4,6 +4,7 @@ server:
 logging:
   level:
     root: info
+    org.apache.coyote.http11.Http11InputBuffer: ${HTTP_LOG_LEVEL:INFO}
 
 eureka:
   client:
@@ -13,6 +14,7 @@ eureka:
 spring:
   application:
     name: oauth-server
+  cloud.loadbalancer.ribbon.enabled: false
   datasource:
     url: jdbc:mysql://dev.mysqldb:3306/sky_line_db_wuling?useUnicode=true&characterEncoding=UTF8&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root

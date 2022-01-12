@@ -1,6 +1,8 @@
 server:
   port: ${SERVER_PORT}
 
+spring.cloud.loadbalancer.ribbon.enabled: false
+
 eureka:
   instance:
     hostname: localhost

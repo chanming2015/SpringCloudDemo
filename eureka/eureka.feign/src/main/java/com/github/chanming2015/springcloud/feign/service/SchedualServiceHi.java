@@ -17,6 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @FeignClient(value = "service-hi", fallbackFactory = MyFallbackFactory.class)
 public interface SchedualServiceHi
 {
-    @RequestMapping(value = "/hi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @RequestMapping(value = "/hi", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     ResponseEntity<String> sayHiFromClientOne(@RequestParam(value = "name") String name, @RequestHeader(value = "Cookie") String cookie);
 }

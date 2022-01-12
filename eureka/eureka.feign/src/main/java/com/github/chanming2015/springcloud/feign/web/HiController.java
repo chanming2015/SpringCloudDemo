@@ -22,7 +22,7 @@ public class HiController
     @Autowired
     private SchedualServiceHi schedualServiceHi;
 
-    @GetMapping(value = "/hi", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @GetMapping(value = "/hi", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> sayHi(@RequestParam String name, @RequestHeader(required = true) String cookie)
     {
         return schedualServiceHi.sayHiFromClientOne(name, cookie);

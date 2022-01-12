@@ -4,11 +4,13 @@ server:
 logging:
   level:
     root: info
+    com.github.chanming2015.springcloud.eureka.gateway.http: ${HTTP_LOG_LEVEL:INFO}
   
 spring:
   application:
     name: service-gateway
   cloud:
+    loadbalancer.ribbon.enabled: false
     gateway:
       discovery:
         locator:
